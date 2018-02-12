@@ -7,6 +7,7 @@ import './config/mongodb-connection';
 // import path from 'path';
 
 import addTask from './routes/addTaskRoutes';
+import getTask from './routes/getTaskRoutes';
 
 const app = express();
 const debug = Debug('to-do-api:app');
@@ -24,6 +25,7 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 
 app.use('/api', addTask);
+app.use('/api', getTask);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
