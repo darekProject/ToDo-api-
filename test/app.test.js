@@ -20,11 +20,15 @@ beforeEach( async () => {
 describe('Test all endpoint', () => {
     describe('PUT /add', () => {
         it('should create a new task to do', (done) => {
-            const text = 'Text from test';
+            const task = {
+                "text" : "Text from test",
+                "completed": false,
+                "deadline": "2016-05-18T16:00:00.000Z",
+            };
 
             chai.request(app)
                 .put('/api/add')
-                .send({data: text})
+                .send({data: task})
                 .end((err, res) => {
                     if (err) {
                         return done(err);
@@ -107,7 +111,7 @@ describe('Test all endpoint', () => {
         it('should delete task by id',  (done) => {
             const sendValue = {
                 "_id": existTask._id
-            }
+            };
 
             chai.request(app)
                 .delete('/api/delete')

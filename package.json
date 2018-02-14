@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon ./bin/start",
-    "test": "mocha ./test/**.test.js --compilers js:babel-core/register"
+    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha ./test/**.test.js --compilers js:babel-core/register"
   },
   "dependencies": {
     "babel-core": "^6.25.0",
