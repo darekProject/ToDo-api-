@@ -6,13 +6,12 @@ const router = express.Router();
 const Tasks = mongoose.model('tasks');
 
 router.put('/add', async (req, res) => {
-    const {text, completed} = req.body.data;
+    const {text, completed, deadline} = req.body.data;
 
     const task = new Tasks({
         text,
         completed,
-        created_at: Date.now(),
-        update_at: Date.now()
+        deadline: deadline
     });
 
     try {
