@@ -15,5 +15,18 @@ router.get('/showAll', async (req, res) => {
     }
 });
 
+router.get('/show/:completed', async (req, res) => {
+    let {completed} = req.params;
+
+    completed = String(completed) === 'true';
+
+    try {
+        const data = await Tasks.find({completed: completed});
+        res.status(200).send({data});
+    } catch (err) {
+        res.status(422).send({data: 'Error: ' + err})
+    }
+});
+
 export default router;
 
